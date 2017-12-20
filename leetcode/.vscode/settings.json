@@ -1,0 +1,49 @@
+{
+    "files.associations": {
+        "*.cpp": "cpp",
+        "iostream": "cpp",
+        "vector": "cpp",
+        "istream": "cpp",
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "limits": "cpp",
+        "map": "cpp",
+        "tuple": "cpp",
+        "functional": "cpp",
+        "cstdlib": "cpp",
+        "ostream": "cpp",
+        "algorithm": "cpp",
+        "climits": "cpp",
+        "*.tcc": "cpp",
+        "sstream": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "unordered_map": "cpp",
+        "cmath": "cpp",
+        "queue": "cpp",
+        "streambuf": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "exception": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "stack": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp"
+    },
+    "[cpp]": {
+        "editor.quickSuggestions": true
+    },
+    "[c]": {
+        "editor.quickSuggestions": true
+    }
+}

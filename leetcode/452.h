@@ -29,6 +29,25 @@ class Solution {
         return res;
     }
 };
+// leetcode的答案 思路更加清晰的解法 小作修改
+// https://discuss.leetcode.com/topic/73981/share-my-explained-greedy-solution-as-the-highest-voted-java-solution-right-now-is-not-ideal/3
+class Solution_0 {
+  public:
+    int findMinArrowShots(vector<pair<int, int>> &points) {
+        sort(points.begin(), points.end(),
+             [](pair<int, int> &a, pair<int, int> &b) {
+                 return a.second < b.second;
+             });
+        int end = 0, res = 0;
+        for (int i = 0; i < points.size(); i++) {
+            if (i == 0 || points[i].first > end) {
+                end = points[i].second;
+                res++;
+            }
+        }
+        return res;
+    }
+};
 
 void test() {
     Solution s;

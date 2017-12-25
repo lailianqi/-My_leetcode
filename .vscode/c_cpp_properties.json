@@ -45,7 +45,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceRoot/leetcode}",
+                "${workspaceRoot}/leetcode",
                 "C:/MinGW/lib/gcc/mingw32/4.9.2/include/c++",
                 "c:/MinGW/lib/gcc/mingw32/4.9.2/include/c++/mingw32",
                 "c:/MinGW/lib/gcc/mingw32/4.9.2/include/c++/tr1"

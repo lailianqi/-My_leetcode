@@ -3,6 +3,8 @@
         "vector": "cpp",
         "unordered_map": "cpp",
         "*.tcc": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "array": "cpp",
+        "tuple": "cpp"
     }
 }

@@ -5,6 +5,10 @@
         "*.tcc": "cpp",
         "cmath": "cpp",
         "array": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "type_traits": "cpp"
     }
 }

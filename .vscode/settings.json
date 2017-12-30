@@ -10,6 +10,8 @@
         "initializer_list": "cpp",
         "utility": "cpp",
         "type_traits": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "numeric": "cpp",
+        "functional": "cpp"
     }
 }

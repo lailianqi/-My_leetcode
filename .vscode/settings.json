@@ -12,6 +12,7 @@
         "type_traits": "cpp",
         "limits": "cpp",
         "numeric": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "unordered_set": "cpp"
     }
 }

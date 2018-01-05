@@ -83,6 +83,25 @@ class Solution_1 {
         helper(nums, sums, index + 1, target + nums[index], res);
     }
 };
+
+// 现在介绍最牛逼的方案 来自与leetcode的答案 通过数学的思维来分析答案
+// 程序的某部分来自leetcode的416题
+// https://discuss.leetcode.com/topic/76243/java-15-ms-c-3-ms-o-ns-iterative-dp-solution-using-subset-sum-with-explanation/2
+class Solution_2 {
+  public:
+    int findTargetSumWays(vector<int> &nums, int S) {
+        int sum = accumulate(nums.begin(), nums.end(), 0);
+        return sum < S || (S + sum) & 1 ? 0 : subsetSum(nums, (S + sum) >> 1);
+    }
+    int subsetSum(vector<int> &nums, int S) {
+        int dp[S + 1] = {0};
+        dp[0] = 1;
+        for (int n : nums)
+            for (int i = S; i >= n; i--)
+                dp[i] += dp[i - n];
+        return dp[S];
+    }
+};
 void test() {
     Solution s;
     vector<int> nums = {1, 1, 1, 1, 1};

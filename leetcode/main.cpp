@@ -1,10 +1,8 @@
-// #include "498.h"
+#include "488.h"
 #include <iostream>
 #include <string>
 using namespace std;
 int main() {
-    string s = "aabcd";
-    string ac = "abc";
-    cout << s.find_first_of(ac.c_str());
+    test();
     return 0;
 }

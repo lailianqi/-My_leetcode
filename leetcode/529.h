@@ -5,6 +5,7 @@ using namespace std;
 // LeetCode的答案和我的解法差不多 都是采用dfs的思想 写法也相近 不过
 // 我的答案更加的简洁
 // https://discuss.leetcode.com/topic/80802/java-solution-dfs-bfs/7
+// https://discuss.leetcode.com/topic/80804/straight-forward-java-solution
 class Solution {
   public:
     vector<vector<char>> updateBoard(vector<vector<char>> &board,

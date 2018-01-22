@@ -1,8 +1,9 @@
-#include "522LongestUncommonSubsequenceII.h"
+#include "529.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
+    test();
     return 0;
 }

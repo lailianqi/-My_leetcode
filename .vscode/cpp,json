@@ -1,0 +1,16 @@
+{
+	"For Loop": {
+		"prefix": "for_i",
+		"body": [
+			"for (int i = 0; i < n; i++) {\n}"
+		],
+		"description": "For Loop"
+	},
+	"using namespace std": {
+		"prefix": "uns",
+		"body": [
+			"using namespace std;"
+		],
+		"description": "using namespace std"
+	}
+}

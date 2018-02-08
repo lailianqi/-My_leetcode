@@ -40,7 +40,7 @@ class Solution {
         do {
             int q = (p + 1) % points.size();
             for (int i = 0; i < points.size(); i++) {
-                //>0 应该是顺时针 <0是逆时针 //这里的orientation反了 编程了qrXpq
+                //>0 应该是顺时针 <0是逆时针 //这里的orientation反了 变成了qrXpq
                 if (orientation(points[p], points[i], points[q]) > 0) {
                     q = i;
                 }

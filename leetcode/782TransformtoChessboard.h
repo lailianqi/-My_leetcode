@@ -49,10 +49,12 @@ class Solution {
         int ones = countInteger(k1 & Nones);
         int cand = INT_MAX;
         if (N % 2 == 0 || ones * 2 < N) { // zero start
-            cand = min(cand, countInteger(k1 ^ (0xAAAAAAAA) & Nones) / 2);
+            cand = min(cand, countInteger(k1 ^ (0xAAAAAAAA) & Nones) /
+                                 2); //因为数字是从右边开始比较的 所以是1010
         }
         if (N % 2 == 0 || ones * 2 > N) // ones start
-            cand = min(cand, countInteger(k1 ^ (0x55555555) & Nones) / 2);
+            cand = min(cand, countInteger(k1 ^ (0x55555555) & Nones) /
+                                 2); //和上面同一个道理
         return cand;
     }
     int countInteger(int num) {

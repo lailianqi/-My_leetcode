@@ -32,6 +32,7 @@ class Solution {
 // dp[i][j] = dp[i][j-1]+dp[i-1][j]-dp[i-1][j-i]
 // https://leetcode.com/problems/k-inverse-pairs-array/discuss/104815/Java-DP-O(nk)-solution
 // https://www.cnblogs.com/grandyang/p/7111385.html
+// https://leetcode.com/problems/k-inverse-pairs-array/solution/
 class Solution_0 {
   public:
     int kInversePairs(int n, int k) {
@@ -51,3 +52,24 @@ class Solution_0 {
         return dp[n][k];
     }
 };
+
+// 备忘录的写法
+// https://leetcode.com/problems/k-inverse-pairs-array/solution/
+/*
+public class Solution {
+    public int kInversePairs(int n, int k) {
+        int[] dp = new int[k + 1];
+        int M = 1000000007;
+        for (int i = 1; i <= n; i++) {
+            int[] temp = new int[k + 1];
+            temp[0] = 1;
+            for (int j = 1; j <= k ; j++) {
+                int val = (dp[j] + M - ((j - i) >= 0 ? dp[j - i] : 0)) % M;
+                temp[j] = (temp[j - 1] + val) % M;
+            }
+            dp = temp;
+        }
+        return ((dp[k] + M - (k > 0 ? dp[k - 1] : 0)) % M);
+    }
+}
+*/

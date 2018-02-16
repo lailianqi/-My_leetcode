@@ -1,6 +1,6 @@
-#include <vector>
-#include <climits>
 #include <algorithm>
+#include <climits>
+#include <vector>
 using namespace std;
 //自己的第一次的思路，完美ac，时间的复杂度为O(n2)
 class Solution {
@@ -47,12 +47,12 @@ class Solution_1 {
     int lengthOfLIS(vector<int> &nums) {
         int counter = 0;
         vector<int> paths(nums.size() + 1, INT_MAX);
-        paths[counter++] = INT_MIN;
+        counter++;
         for (int i = 0; i < nums.size(); i++) {
             auto it =
                 lower_bound(paths.begin(), paths.begin() + counter, nums[i]);
             *(it) = min(*(it), nums[i]);
-            if (it - paths.begin() - 1 == counter - 1) {
+            if (it - paths.begin() == counter - 1) {
                 counter++;
             }
         }

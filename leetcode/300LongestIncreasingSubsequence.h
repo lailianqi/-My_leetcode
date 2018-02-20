@@ -19,6 +19,24 @@ class Solution {
         return result;
     }
 };
+
+// 第二个自己的方案 上面的修改版
+class Solution_ {
+  public:
+    int lengthOfLIS(vector<int> &nums) {
+        int result = 0, m = nums.size();
+        vector<int> dp(m, 1);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i]) {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                }
+            }
+            result = max(result, dp[i]);
+        }
+        return result;
+    }
+};
 //自己写的另外的一种方法
 // Your runtime beats 67.23 % of cpp submissions.
 class Solution_0 {

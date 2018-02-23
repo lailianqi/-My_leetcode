@@ -39,3 +39,7 @@ class Solution {
         return parent[target];
     }
 };
+
+
+// 官方的题解
+// https://leetcode.com/problems/redundant-connection/solution/

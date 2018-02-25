@@ -35,6 +35,7 @@
         "typeinfo": "cpp",
         "string": "cpp",
         "atomic": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "algorithm": "cpp"
     }
 }

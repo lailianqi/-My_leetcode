@@ -16,7 +16,7 @@ class Employee {
     // the id of direct subordinates
     vector<int> subordinates;
 };
-// 自己的第一种解法 成功ac
+// 自己的第一种解法 成功ac 是一道好题 所以加上了标题
 class Solution {
   public:
     int getImportance(vector<Employee *> employees, int id) {

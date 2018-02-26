@@ -1,5 +1,8 @@
 #include <algorithm>
+#include <iterator>
+#include <numeric>
 #include <string>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -10,4 +13,41 @@ bool isInVaildBoardary(vector<vector<int>> &grid, int row, int col) {
         return true;
     }
     return false;
+}
+
+struct Comparator {
+    bool operator()(const std::pair<int, int> &lhs,
+                    const std::pair<int, int> &rhs) const {
+        if (lhs.first == rhs.first)
+            return lhs.second < rhs.second;
+        else
+            return lhs.first < rhs.first;
+    }
+};
+
+
+
+class Employee {
+  public:
+    // It's the unique ID of each node.
+    // unique id of this employee
+    int id;
+    // the importance value of this employee
+    int importance;
+    // the id of direct subordinates
+    vector<int> subordinates;
+};
+int helper(unordered_map<int, Employee *> &dir, int id) {
+    return dir[id]->importance +
+           accumulate(dir[id]->subordinates.begin(),
+                      dir[id]->subordinates.end(), 0,
+                      [&](int sum, int id) { return sum + helper(dir, id); });
+}
+
+int getImportance(vector<Employee *> employees, int id) {
+    unordered_map<int, Employee *> dir;
+    transform(
+        employees.begin(), employees.end(), inserter(dir, dir.end()),
+        [&](Employee *element) { return make_pair(element->id, element); });
+    return helper(dir, id);
 }

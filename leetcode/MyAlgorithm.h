@@ -71,3 +71,10 @@ bool isSubsequence(string s, string t) {
     }
     return i == s.size();
 }
+
+int findParent(vector<int> &parent, int target) {
+    if (parent[target] != target) {
+        parent[target] = findParent(parent, parent[target]);
+    }
+    return parent[target];
+}

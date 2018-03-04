@@ -61,3 +61,13 @@ int minimumDeleteSum(string A, string B) {
     }
     return dp[m][n];
 }
+
+bool isSubsequence(string s, string t) {
+    int i = 0, j = 0;
+    for (; i < s.size() && j < t.size(); j++) {
+        if (s[i] == t[j]) {
+            i++;
+        }
+    }
+    return i == s.size();
+}

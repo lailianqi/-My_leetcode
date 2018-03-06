@@ -1,9 +1,9 @@
-#include "SPFA.h"
+#include "724.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
-    test1();
+    test();
     return 0;
 }

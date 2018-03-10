@@ -1,9 +1,10 @@
-#include "724.h"
 #include <iostream>
+#include <cstdio>
 #include <string>
 using namespace std;
 
 int main() {
-    test();
+    // test();
+    printf("dddddd");
     return 0;
 }

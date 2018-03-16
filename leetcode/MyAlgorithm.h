@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <set>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -77,4 +78,14 @@ int findParent(vector<int> &parent, int target) {
         parent[target] = findParent(parent, parent[target]);
     }
     return parent[target];
+}
+
+vector<set<int>> createGraph(vector<pair<int, int>> &prerequisites,
+                             int numCourses) {
+    vector<set<int>> graphPaths(numCourses);
+    for (auto element : prerequisites) {
+        graphPaths[element.first].insert(element.second);
+        graphPaths[element.second].insert(element.first);
+    }
+    return graphPaths;
 }

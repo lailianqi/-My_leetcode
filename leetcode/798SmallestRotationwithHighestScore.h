@@ -51,3 +51,32 @@ class Solution_0 {
                         max_element(change.begin(), change.end()));
     }
 };
+
+// 官方的题解 也只是稍微的理解
+// https://leetcode.com/problems/smallest-rotation-with-highest-score/solution/
+class Solution_1 {
+  public:
+    int bestRotation(vector<int> &A) {
+        int N = A.size();
+        vector<int> bad(N, 0);
+        for (int i = 0; i < N; ++i) {
+            int left = (i - A[i] + 1 + N) % N;
+            int right = (i + 1) % N;
+            bad[left]--;
+            bad[right]++;
+            if (left > right)
+                bad[0]--;
+        }
+
+        int best = -N;
+        int ans = 0, cur = 0;
+        for (int i = 0; i < N; ++i) {
+            cur += bad[i];
+            if (cur > best) {
+                best = cur;
+                ans = i;
+            }
+        }
+        return ans;
+    }
+};

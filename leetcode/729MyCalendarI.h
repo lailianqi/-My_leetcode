@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -40,4 +41,27 @@ class MyCalendar {
 
   private:
     set<pair<int, int>> dir;
+};
+
+//第二种方案 来自LeetCode 使用的map
+// https://leetcode.com/problems/my-calendar-i/discuss/109462/Java-8-liner-TreeMap
+// https://leetcode.com/problems/my-calendar-i/discuss/109475/JavaC++-Clean-Code-with-ExplanationF
+class MyCalendar_0 {
+  public:
+    MyCalendar_0() {}
+
+    bool book(int start, int end) {
+        auto it = dir.lower_bound(start);
+        if (it != dir.end() && it->first < end) {
+            return false;
+        }
+        if (it != dir.begin() && (--it)->second > start) {
+            return false;
+        }
+        dir[start] = end;
+        return true;
+    }
+
+  private:
+    map<int, int> dir;
 };

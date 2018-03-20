@@ -1,6 +1,5 @@
-
+#include "800.h"
 #include <iostream>
-#include <cstdio>
 #include <string>
 using namespace std;
 

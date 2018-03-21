@@ -37,7 +37,8 @@
         "atomic": "cpp",
         "list": "cpp",
         "algorithm": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "string_view": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.errorSquiggles": "Disabled"

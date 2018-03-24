@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <queue>
 #include <set>
 #include <string>
 #include <unordered_map>
@@ -88,4 +89,53 @@ vector<set<int>> createGraph(vector<pair<int, int>> &prerequisites,
         graphPaths[element.second].insert(element.first);
     }
     return graphPaths;
+}
+
+int Dijkstra(vector<vector<int>> &graph, int source, int target,
+             int N) { // 1.......N
+    // auto graph = vector<vector<int>>(N + 1, vector<int>(N + 1, -1));
+    vector<bool> visited(N + 1, false);
+    visited[0] = true, visited[source] = true;
+    auto comp = [](pair<int, int> &a, pair<int, int> &b) {
+        return a.second > b.second;
+    };
+    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)>
+        minStack(comp);
+    for (int i = 0; i <= N; i++) {
+        if (graph[source][i] >= 0) {
+            minStack.push({i, graph[source][i]});
+        }
+    }
+    while (!minStack.empty()) {
+        auto current = minStack.top();
+        minStack.pop();
+        int target = current.first;
+        if (visited[target]) {
+            continue;
+        }
+        if (current.first == target) {
+            return current.second;
+        }
+        visited[target] = true;
+        for (int i = 0; i <= N; i++) {
+            if (!visited[i] && graph[target][i] >= 0) {
+                minStack.push(make_pair(i, current.second + graph[target][i]));
+            }
+        }
+    }
+    return -1;
+}
+
+int Bellman_Ford(vector<vector<int>> &times, int N, int source, int target) {
+    vector<int> dist(N + 1, INT_MAX);
+    dist[source] = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < times.size(); j++) {
+            int u = times[j][0], v = times[j][1], w = times[j][2];
+            if (dist[u] != INT_MAX && dist[u] + w < dist[v]) {
+                dist[v] = dist[u] + w;
+            }
+        }
+    }
+    return dist[target] == INT_MAX ? -1 : dist[target];
 }

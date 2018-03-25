@@ -139,3 +139,6 @@ int Bellman_Ford(vector<vector<int>> &times, int N, int source, int target) {
     }
     return dist[target] == INT_MAX ? -1 : dist[target];
 }
+
+// 双向BFS Bidirectional BFS
+// 752题

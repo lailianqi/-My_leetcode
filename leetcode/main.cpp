@@ -1,11 +1,9 @@
-#include "test3.h"
+#include "test4.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
-
 int main() {
-    printf("dddddd");
-    to_string(444);
-    string s1 = miniNum2("1468");
+    test1();
     return 0;
 }

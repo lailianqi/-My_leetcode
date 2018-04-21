@@ -29,7 +29,8 @@ class Solution {
         }
         return answer;
     }
-    //改进方案
+    // 改进方案
+    // https://leetcode.com/problems/3sum/discuss/7380/Concise-O(N2)-Java-solution
     vector<vector<int> > threeSum1(vector<int> &nums) {
         sort(nums.begin(), nums.end());
         vector<vector<int> > answer;

@@ -1,4 +1,6 @@
-#include <strirng>
+#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 //这道题一开始就没有看懂 简直没法做
 // leetcode的答案
@@ -64,7 +66,7 @@ one, three, five, seven, nine
 // https://discuss.leetcode.com/topic/63382/share-my-simple-and-easy-o-n-solution
 // https://discuss.leetcode.com/topic/64150/straightforward-c-accepted-solution
 //目前看的最爽的解法
-class Solution {
+class Solution_0 {
   public:
     string originalDigits(string s) {
         vector<string> words = {"zero", "two",   "four", "six",   "eight",

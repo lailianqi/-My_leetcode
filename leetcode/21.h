@@ -41,7 +41,8 @@ class Solution {
         }
         return result->next;
     }
-    //采用递归的写法
+    // 采用递归的写法
+    // https://leetcode.com/problems/merge-two-sorted-lists/discuss/9713/A-recursive-solution
     ListNode *mergeTwoLists1(ListNode *l1, ListNode *l2) {
         if (l1 == NULL)
             return l2;

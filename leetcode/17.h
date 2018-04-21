@@ -79,3 +79,7 @@ void test() {
 // unordered_map<char, string> digitToString = {
 //     {'2', "abc"}, {'3', "def"},  {'4', "ghi"}, {'5', "jkl"},
 //     {'6', "mno"}, {'7', "pqrs"}, {'8', "tyv"}, {'9', "wxyz"}};
+
+// 这里的链接才是真正的解法 上面的都是第一次刷题写的 可读性并不好
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8064/My-java-solution-with-FIFO-queue
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/discuss/8097/My-iterative-sollution-very-simple-under-15-lines

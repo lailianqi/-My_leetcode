@@ -23,7 +23,8 @@ int test() {
     return 0;
 }
 
-int helper(vector<int> &value, int start, int cur, int capacity) {
+// 这算法超时 只通过了80%的测试用例  
+int helper(vector<int> &value, int start, long cur, long capacity) {
     if (start >= value.size()) {
         return 1;
     }

@@ -25,7 +25,7 @@ class Solution {
         return strs[0].substr(0, i - 1);
     }
 };
-
+// https://leetcode.com/problems/longest-common-prefix/discuss/6910/Java-code-with-13-lines
 class Solution_0 {
   public:
     string longestCommonPrefix(vector<string> &strs) {

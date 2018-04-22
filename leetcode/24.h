@@ -5,7 +5,7 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
-
+// 第一遍自己的代码 现在看来真烂
 class Solution {
   public:
     ListNode *swapPairs(ListNode *head) {
@@ -57,5 +57,22 @@ class Solution {
             current = current->next->next;
         }
         return dummy->next;
+    }
+};
+
+// 这里是我第二遍的时候添加的解法
+// https://leetcode.com/problems/swap-nodes-in-pairs/discuss/11019/7-8-lines-C++-Python-Ruby
+
+class Solution_0 {
+  public:
+    ListNode *swapPairs(ListNode *head) {
+        ListNode **pp = &head, *a, *b;
+        while ((a = *pp) && (b = a->next)) {
+            a->next = b->next;
+            b->next = a;
+            *pp = b; // 这句话纯粹为了head指向原先的第二个节点
+            pp = &(a->next);
+        }
+        return head;
     }
 };

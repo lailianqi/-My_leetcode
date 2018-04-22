@@ -6,6 +6,9 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
+
+// 这里是自己第一次刷题的时候写的  感觉写的好垃圾
+// 详细的代码请参照python版本
 class Solution {
   public:
     ListNode *reverseKGroup(ListNode *head, int k) {

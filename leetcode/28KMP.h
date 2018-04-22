@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+// 这里的写法是第一次刷的时候写的  思想纯粹是暴力 没什么技术含量
 class Solution {
   public:
     int strStr(string haystack, string needle) {

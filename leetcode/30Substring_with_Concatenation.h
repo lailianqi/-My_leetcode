@@ -2,6 +2,11 @@
 #include <vector>
 #include <map>
 using namespace std;
+
+// 这是来自LeetCode的解法 第二遍还是看了答案 这种解法的思想有点暴力
+// https://leetcode.com/problems/substring-with-concatenation-of-all-words/discuss/13658/Easy-Two-Map-Solution-(C++Java)
+// 更好的版本去看python的
+
 class Solution {
   public:
     vector<int> findSubstring(string s, vector<string> &words) {

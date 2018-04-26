@@ -1,6 +1,9 @@
-#include <vector>
 #include <climits>
+#include <vector>
 using namespace std;
+
+// 下面都是第一遍刷的时候写的版本 太烂 不建议看
+// 详细的版本参照python的题库
 class Solution {
   public:
     //最简单的方法，效率最低
@@ -12,7 +15,8 @@ class Solution {
         }
         return -1;
     }
-    //利用二分查找
+    // 利用二分查找的解法 来自LeetCode
+    // https://leetcode.com/problems/search-in-rotated-sorted-array/discuss/14436/Revised-Binary-Search
     int search1(vector<int> &nums, int target) {
         int left = 0, right = nums.size() - 1;
         int mid;

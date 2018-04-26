@@ -38,7 +38,8 @@
         "list": "cpp",
         "algorithm": "cpp",
         "ios": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "iterator": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.errorSquiggles": "Disabled"

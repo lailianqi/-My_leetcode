@@ -1,5 +1,6 @@
-#include <vector>
+#include <algorithm>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -53,6 +54,34 @@ class Solution {
             }
         }
         return low;
+    }
+};
+
+// 第二遍刷的时候自己增加的解法 LeetCode存在类似方法的题解
+// https://leetcode.com/problems/search-for-a-range/discuss/14699/Clean-iterative-solution-with-two-binary-searches-(with-explanation)
+// https://leetcode.com/problems/search-for-a-range/discuss/14701/A-very-simple-Java-solution-with-only-one-binary-search-algorithm
+// 第三个题解来自sp大神
+// https://leetcode.com/problems/search-for-a-range/discuss/14707/9-11-lines-O(log-n)
+class Solution_1 {
+  public:
+    vector<int> searchRange(vector<int> &nums, int target) {
+        auto it = lower_bound(nums.begin(), nums.end(), target);
+        if (it == nums.end() || *it != target) {
+            return {-1, -1};
+        }
+        auto it2 = upper_bound(nums.begin(), nums.end(), target);
+        return {it - nums.begin(), it2 - nums.begin() - 1};
+    }
+};
+// sp大神的另外的一种解法
+// https://leetcode.com/problems/search-for-a-range/discuss/14707/9-11-lines-O(log-n)
+class Solution_2 {
+  public:
+    vector<int> searchRange(vector<int> &nums, int target) {
+        auto bounds = equal_range(nums.begin(), nums.end(), target);
+        if (bounds.first == bounds.second)
+            return {-1, -1};
+        return {bounds.first - nums.begin(), bounds.second - nums.begin() - 1};
     }
 };
 

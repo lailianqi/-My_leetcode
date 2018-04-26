@@ -1,7 +1,10 @@
-#include <vector>
 #include <algorithm>
+#include <iterator>
+#include <vector>
 using namespace std;
 
+// 第二遍的时候发现第一遍写的答案没标出官方题解的网址 所以加上网址
+// https://leetcode.com/problems/next-permutation/discuss/13867/A-simple-algorithm-from-Wikipedia-with-C++-implementation-(can-be-used-in-Permutations-and-Permutations-II)
 class Solution {
   public:
     void nextPermutation(vector<int> &nums) {
@@ -28,6 +31,39 @@ class Solution {
     }
 };
 
+// 第二遍刷的时候 上面的改写版
+// 题解来自sp大神
+// https://leetcode.com/problems/next-permutation/discuss/13921/1-4-11-lines-C++
+class Solution_0 {
+  public:
+    void nextPermutation(vector<int> &nums) {
+        auto it = is_sorted_until(nums.rbegin(), nums.rend());
+        if (it != nums.rend()) {
+            swap(*it, *upper_bound(nums.rbegin(), it, *it));
+        }
+        reverse(nums.rbegin(), it);
+    }
+};
+
+// sp大神的第二种解法
+// https://leetcode.com/problems/next-permutation/discuss/13921/1-4-11-lines-C++
+class Solution_1 {
+  public:
+    void nextPermutation(vector<int> &nums) {
+        int index = nums.size() - 1;
+        while (index > 0 && nums[index - 1] >= nums[index]) {
+            index--;
+        }
+        reverse(nums.begin() + index, nums.end());
+        if (index > 0) {
+            int k = index--;
+            while (nums[k] <= nums[index]) {
+                k++;
+            }
+            swap(nums[index], nums[k]);
+        }
+    }
+};
 /*
 题解:
 按照字典序的定义不难推出，正序，是一组排列中最小的排列，而逆序，则是一组排列中最大的排列。

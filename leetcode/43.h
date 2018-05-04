@@ -2,6 +2,8 @@
 using namespace std;
 
 //参照了题解
+// 第二遍刷的时候添加了题解的注释
+// https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
 class Solution {
   public:
     string multiply(string num1, string num2) {

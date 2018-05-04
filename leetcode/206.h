@@ -34,12 +34,11 @@ class Solution_0 {
   public:
     ListNode *reverseList(ListNode *head) { return helper(head); }
     ListNode *helper(ListNode *head) {
-        if (head == NULL || head->next) {
+        if (!head || !(head->next))
             return head;
-        }
-        ListNode *p = helper(head->next);
+        ListNode *node = reverseList(head->next);
         head->next->next = head;
-        head = NULL;
-        return p;
+        head->next = NULL;
+        return node;
     }
 };

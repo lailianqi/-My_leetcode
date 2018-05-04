@@ -58,3 +58,24 @@ class Solution {
         }
     }
 };
+
+// 第二遍刷的时候新的解法
+class Solution_0 {
+  public:
+    ListNode *Merge(ListNode *pHead1, ListNode *pHead2) {
+        ListNode *result = new ListNode(0);
+        auto current = result;
+        while (pHead1 && pHead2) {
+            if (pHead1->val < pHead2->val) {
+                current->next = pHead1;
+                pHead1 = pHead1->next;
+            } else {
+                current->next = pHead2;
+                pHead2 = pHead2->next;
+            }
+            current = current->next;
+        }
+        current->next = pHead1 ? pHead1 : pHead2;
+        return result->next;
+    }
+};

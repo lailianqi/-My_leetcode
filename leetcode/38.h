@@ -28,6 +28,7 @@ class Solution {
     }
 };
 
+// 第二遍刷的时候发现了下面的程序有bug
 class Solution_0 {
   public:
     string countAndSay(int n) {

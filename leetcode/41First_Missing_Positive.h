@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-//参考了答案
+//参考了答案 好题
 class Solution {
   public:
     int firstMissingPositive(vector<int> &nums) {

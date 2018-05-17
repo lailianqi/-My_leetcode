@@ -1,6 +1,7 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <functional>
 using namespace std;
 //自己的写法写的，感觉这题这样写太简单了
 class MedianFinder {
@@ -58,4 +59,27 @@ class Solution {
       private:
         priority_queue<long> small, large;
     };
+};
+
+class Solution_0 {
+  public:
+    void Insert(int num) {
+        small_stack.push(num);
+        big_stack.push(small_stack.top());
+        small_stack.pop();
+        if (small_stack.size() < big_stack.size()) {
+            small_stack.push(big_stack.top());
+            big_stack.pop();
+        }
+    }
+
+    double GetMedian() {
+        return small_stack.size() > big_stack.size()
+                   ? small_stack.top()
+                   : (small_stack.top() + big_stack.top()) / 2.0;
+    }
+
+  private:
+    priority_queue<int, vector<int>, greater<int>> small_stack;
+    priority_queue<int, vector<int>, less<int>> big_stack;
 };

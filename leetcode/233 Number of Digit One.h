@@ -1,4 +1,4 @@
-//没有写出来
+//没有写出来 好题
 // leetcode的答案
 // https://discuss.leetcode.com/topic/18054/4-lines-o-log-n-c-java-python
 class Solution {

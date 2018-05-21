@@ -74,13 +74,6 @@ bool isSubsequence(string s, string t) {
     return i == s.size();
 }
 
-int findParent(vector<int> &parent, int target) {
-    if (parent[target] != target) {
-        parent[target] = findParent(parent, parent[target]);
-    }
-    return parent[target];
-}
-
 vector<set<int>> createGraph(vector<pair<int, int>> &prerequisites,
                              int numCourses) {
     vector<set<int>> graphPaths(numCourses);
@@ -142,3 +135,46 @@ int Bellman_Ford(vector<vector<int>> &times, int N, int source, int target) {
 
 // 双向BFS Bidirectional BFS
 // 752题
+
+// 这种递归的和while的思想其实是一样的
+// while在下面的union_find里面
+int findParent(vector<int> &parent, int target) {
+    if (parent[target] != target) {
+        parent[target] = findParent(parent, parent[target]);
+    }
+    return parent[target];
+}
+
+// union find解法
+/*
+class UnionFind{
+        int[] father;
+        int[] count;
+        UnionFind(int len) {
+            father = new int[len];
+            count = new int[len];
+            for (int i = 0; i < len ; i++) {
+                father[i] = i;
+                count[i] = 1;
+            }
+        }
+        
+
+        int find(int toFind) {
+            while(father[toFind] != toFind) {
+                father[toFind] = father[father[toFind]];
+                toFind = father[toFind];
+            }
+            return toFind;
+        }
+
+        void union(int a, int b) {
+            int fatherA = find(a);
+            int fatherB = find(b);
+            if (fatherA != fatherB) {
+                father[fatherA] = fatherB;
+                count[fatherB] += count[fatherA];
+            }
+        }
+    }
+*/

@@ -102,17 +102,17 @@ int Dijkstra(vector<vector<int>> &graph, int source, int target,
     while (!minStack.empty()) {
         auto current = minStack.top();
         minStack.pop();
-        int target = current.first;
-        if (visited[target]) {
+        int t = current.first;
+        if (visited[t]) {
             continue;
         }
         if (current.first == target) {
             return current.second;
         }
-        visited[target] = true;
+        visited[t] = true;
         for (int i = 0; i <= N; i++) {
             if (!visited[i] && graph[target][i] >= 0) {
-                minStack.push(make_pair(i, current.second + graph[target][i]));
+                minStack.push(make_pair(i, current.second + graph[t][i]));
             }
         }
     }

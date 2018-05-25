@@ -1,4 +1,11 @@
+#include <algorithm>
+#include <iostream>
+#include <map>
+#include <queue>
+#include <set>
+#include <string>
 #include <vector>
+using namespace std;
 using namespace std;
 //存在内存爆炸和超时的情况，答案并不对
 class Solution {
@@ -18,7 +25,9 @@ class Solution {
         return dp[num][prices.size() - 1];
     }
 };
-//这是自己写出的最优化方案
+// 这是自己写出的最优化方案
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54113/A-Concise-DP-Solution-in-Java
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/discuss/54117/Clean-Java-DP-solution-with-comment
 class Solution_0 {
   public:
     int maxProfit(int k, vector<int> &prices) {

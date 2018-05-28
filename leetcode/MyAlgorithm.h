@@ -18,8 +18,8 @@ bool isInVaildBoardary(vector<vector<int>> &grid, int row, int col) {
 }
 
 struct Comparator {
-    bool operator()(const std::pair<int, int> &lhs,
-                    const std::pair<int, int> &rhs) const {
+    bool operator()(const pair<int, int> &lhs,
+                    const pair<int, int> &rhs) const {
         if (lhs.first == rhs.first)
             return lhs.second < rhs.second;
         else
@@ -84,35 +84,61 @@ vector<set<int>> createGraph(vector<pair<int, int>> &prerequisites,
     return graphPaths;
 }
 
+struct comp {
+    bool operator()(pair<int, int> &a, pair<int, int> &b) {
+        return a.second > b.second;
+    }
+};
+// 邻接矩阵做的迪杰斯特拉算法
 int Dijkstra(vector<vector<int>> &graph, int source, int target,
              int N) { // 1.......N
     // auto graph = vector<vector<int>>(N + 1, vector<int>(N + 1, -1));
     vector<bool> visited(N + 1, false);
-    visited[0] = true, visited[source] = true;
-    auto comp = [](pair<int, int> &a, pair<int, int> &b) {
-        return a.second > b.second;
-    };
-    priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(comp)>
-        minStack(comp);
-    for (int i = 0; i <= N; i++) {
-        if (graph[source][i] >= 0) {
-            minStack.push({i, graph[source][i]});
-        }
-    }
+    visited[0] = true;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, comp> minStack;
+    minStack.push({source, 0});
     while (!minStack.empty()) {
         auto current = minStack.top();
         minStack.pop();
-        int t = current.first;
-        if (visited[t]) {
+        int arrived = current.first;
+        if (visited[arrived]) {
             continue;
         }
-        if (current.first == target) {
+        if (arrived == target) {
             return current.second;
         }
-        visited[t] = true;
+        visited[arrived] = true;
         for (int i = 0; i <= N; i++) {
-            if (!visited[i] && graph[target][i] >= 0) {
-                minStack.push(make_pair(i, current.second + graph[t][i]));
+            if (!visited[i] && graph[arrived][i] >= 0) {
+                minStack.push(make_pair(i, current.second + graph[arrived][i]));
+            }
+        }
+    }
+    return -1;
+}
+
+// 边来做的迪杰斯特拉算法
+int Dijkstra2(unordered_map<int, vector<pair<int, int>>> &graph, int source,
+              int target, int N) {
+    vector<bool> visited(N + 1, false);
+    priority_queue<pair<int, int>, vector<pair<int, int>>, comp> minStack;
+    minStack.push({source, 0});
+    while (!minStack.empty()) {
+        auto current = minStack.top();
+        minStack.pop();
+        int arrived = current.first;
+        if (visited[arrived]) {
+            continue;
+        }
+        if (arrived == target) {
+            return current.second;
+        }
+        visited[arrived] = true;
+        for (int i = 0; i < graph[arrived].size(); i++) {
+            if (!visited[graph[arrived][i].first]) {
+                minStack.push(
+                    make_pair(graph[arrived][i].first,
+                              current.second + graph[arrived][i].second));
             }
         }
     }
@@ -159,6 +185,7 @@ class UnionFind{
             }
         }
         
+
 
         int find(int toFind) {
             while(father[toFind] != toFind) {

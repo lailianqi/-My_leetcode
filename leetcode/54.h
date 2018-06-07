@@ -73,12 +73,12 @@ need to change the Direction matrix; the main loop does not need to be touched.
 */
 class Solution_0 {
   public:
-    vector<int> spiralOrder(vector<vector<int> > &matrix) {
+    vector<int> spiralOrder(vector<vector<int>> &matrix) {
         vector<int> answer;
         if (matrix.size() == 0)
             return answer;
-        vector<vector<int> > dirs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-        vector<int> steps = {matrix[0].size(), matrix.size()-1};
+        vector<vector<int>> dirs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        vector<int> steps = {matrix[0].size(), matrix.size() - 1};
         int idir = 0;
         int h = 0, v = -1;
         while (steps[idir % 2]) {
@@ -94,9 +94,7 @@ class Solution_0 {
     }
 };
 
-//https://leetcode.com/problems/spiral-matrix/#/solutions  Python的写法
-
-
+// https://leetcode.com/problems/spiral-matrix/#/solutions  Python的写法
 
 // void test() {
 //     Solution s;

@@ -39,7 +39,8 @@
         "algorithm": "cpp",
         "ios": "cpp",
         "string_view": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "deque": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.errorSquiggles": "Enabled"

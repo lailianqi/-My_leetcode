@@ -1,6 +1,6 @@
-#include <vector>
 #include <iostream>
 #include <map>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -94,6 +94,44 @@ class Solution_1 {
     }
 };
 
+// https://leetcode.com/problems/set-matrix-zeroes/discuss/26113/21-lines-concise-and-easy-understand-C++-solution-O(1)-space-three-steps
+class Solution_2 {
+  public:
+    void setZeroes(vector<vector<int>> &matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        bool row = false, col = false;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    if (i == 0) {
+                        row = true;
+                    }
+                    if (j == 0) {
+                        col = true;
+                    }
+                    matrix[i][0] = 0, matrix[0][j] = 0;
+                }
+            }
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0)
+                    matrix[i][j] = 0;
+            }
+        }
+        if (row) {
+            for (int i = 0; i < n; i++) {
+                matrix[0][i] = 0;
+            }
+        }
+        if (col) {
+            for (int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
+            }
+        }
+    }
+};
+
 void test() {
     // Solution s;
     // vector<vector<int>> matrix = {
@@ -103,5 +141,5 @@ void test() {
     Solution_1 s;
     vector<vector<int>> matrix = {{1}};
     s.setZeroes(matrix);
-    cout<<matrix[0][0]<<endl;
+    cout << matrix[0][0] << endl;
 }

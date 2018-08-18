@@ -90,3 +90,17 @@ void test() {
     vector<int> v = {-1, -1, 0, 0, 0, 2, 2, 3};
     cout << s.lower_bound(v, 1);
 }
+
+// 自己的lower_bound
+int my_self_lower_bound(vector<int> &nums, int target) {
+    auto first = nums.begin(), last = nums.end();
+    while (first < last) {
+        auto mid = first + ((last - first) >> 1);
+        if (*mid < target) {
+            first = mid + 1;
+        } else {
+            last = mid;
+        }
+    }
+    return first - nums.begin();
+}

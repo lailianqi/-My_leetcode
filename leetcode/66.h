@@ -17,20 +17,37 @@ class Solution {
     }
 };
 
-//leetcode上比较好的答案
+// leetcode上比较好的答案
 class Solution_0 {
-public:
+  public:
     vector<int> plusOne(vector<int> &digits) {
         bool carry = true;
-        
-        for(int i=digits.size()-1; i >= 0 && carry; i--) {
-            carry = (++digits[i]%=10) == 0;
+
+        for (int i = digits.size() - 1; i >= 0 && carry; i--) {
+            carry = (++digits[i] %= 10) == 0;
         }
 
-        if(carry) {
+        if (carry) {
             digits.insert(digits.begin(), 1);
         }
-    
+
+        return digits;
+    }
+};
+
+// 第二遍时新增加的答案
+class Solution_1 {
+  public:
+    vector<int> plusOne(vector<int> &digits) {
+        int carry = 1;
+        for (int i = digits.size() - 1; i >= 0 && carry; i--) {
+            digits[i] += carry;
+            carry = digits[i] / 10;
+            digits[i] %= 10;
+        }
+        if (carry) {
+            digits.insert(digits.begin(), 1);
+        }
         return digits;
     }
 };

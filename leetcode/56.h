@@ -32,3 +32,27 @@ class Solution {
         return answers;
     }
 };
+
+class Solution_0 {
+  public:
+    vector<Interval> merge(vector<Interval> &intervals) {
+        if (intervals.size() == 0) {
+            return {};
+        }
+        vector<Interval> res;
+        sort(intervals.begin(), intervals.end(),
+             [](Interval &a, Interval &b) { return a.start < b.start; });//Strict Weak Ordering
+        int m = intervals.size(), start = intervals[0].start,
+            end = intervals[0].end;
+        for (int i = 0; i < m; i++) {
+            if (intervals[i].start <= end) {
+                end = max(end, intervals[i].end);
+            } else {
+                res.push_back(Interval(start, end));
+                start = intervals[i].start, end = intervals[i].end;
+            }
+        }
+        res.push_back(Interval(start, end));
+        return res;
+    }
+};

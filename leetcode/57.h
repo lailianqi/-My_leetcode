@@ -58,3 +58,7 @@ class Solution_0 {
         return answers;
     }
 };
+
+
+// 更好的方法
+// https://leetcode.com/problems/insert-interval/discuss/21669/Easy-and-clean-O(n)-C++-solution

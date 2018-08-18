@@ -35,9 +35,14 @@ class Solution {
 
 // 来自LeetCode的答案 最基本的二分图的算法 交叉染色法
 // https://discuss.leetcode.com/topic/120559/java-dfs
+// https://blog.csdn.net/xiao_k666/article/details/79216813
 // 中文解释
 // https://www.cnblogs.com/digitalhermit/p/5119908.html
 // https://www.cnblogs.com/zhangjiuding/p/7710811.html
+
+/*
+算法的要点是isBipartite函数里面for里面未遍历的节点所连接的点以前也没有遍历过
+*/
 class Solution_0 {
   public:
     bool isBipartite(vector<vector<int>> &graph) {

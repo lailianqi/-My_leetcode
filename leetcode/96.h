@@ -6,6 +6,9 @@ G(n) = F(1, n) + F(2, n) + ... + F(n, n);
 =>
 G(n) = G(0, n-1) + G(1, n-2) + .. + G(n-1) * G(0)
 */
+
+// 来自leetcode比较详细的解释
+// https://leetcode.com/problems/unique-binary-search-trees/discuss/31707/Fantastic-Clean-Java-DP-Solution-with-Detail-Explaination
 class Solution {
   public:
     int numTrees(int n) {

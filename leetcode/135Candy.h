@@ -1,4 +1,4 @@
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 // Leetcode的答案
 // https://discuss.leetcode.com/topic/25985/simple-o-n-java-solution-with-comments

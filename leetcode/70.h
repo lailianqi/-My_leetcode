@@ -1,5 +1,5 @@
-#include <vector>
 #include <cmath>
+#include <vector>
 using namespace std;
 class Solution {
   public:
@@ -23,5 +23,19 @@ class Solution_0 {
         double result =
             1 / root5 * (pow((1 + root5) / 2, n) - pow((1 - root5) / 2, n));
         return (int)(result);
+    }
+};
+
+// 二刷的思路
+class Solution_1 {
+  public:
+    int climbStairs(int n) {
+        int a = 1, prev = 0;
+        for (int i = 0; i < n; i++) {
+            int temp = a;
+            a = a + prev;
+            prev = temp;
+        }
+        return a;
     }
 };

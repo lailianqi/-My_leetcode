@@ -1,6 +1,6 @@
-#include <vector>
-#include <stack>
 #include <algorithm>
+#include <stack>
+#include <vector>
 using namespace std;
 //参考的答案
 // https://discuss.leetcode.com/topic/5125/sharing-my-simple-c-code-o-n-time-o-1-space
@@ -133,3 +133,38 @@ void test() {
     vector<int> height = {2, 0, 2};
     s.trap(height);
 }
+
+// -------------二刷
+class Solution_3 {
+  public:
+    int trap(vector<int> &height) {
+        stack<int> stk;
+        int m = height.size();
+        int res = 0;
+        for (int i = 0; i < m; i++) {
+            while (!stk.empty() && height[stk.top()] < height[i]) {
+                int temp = height[stk.top()];
+                stk.pop();
+                res += stk.empty()
+                           ? 0
+                           : ((min(height[i], height[stk.top()]) - temp) *
+                              (i - stk.top() - 1));
+            }
+            stk.push(i);
+        }
+        return res;
+    }
+};
+class Solution_31 {
+  public:
+    int trap(vector<int> &height) {
+        int m = height.size(), res = 0;
+        int left = 0, right = m - 1, max_level = 0;
+        for (int i = 0; i < m; i++) {
+            int safe = height[height[left] < height[right] ? left++ : right--];
+            max_level = max(max_level, safe);
+            res += (max_level - safe);
+        }
+        return res;
+    }
+};

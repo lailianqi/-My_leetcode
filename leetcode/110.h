@@ -1,5 +1,5 @@
-#include <string>
 #include <cmath>
+#include <string>
 #include <vector>
 using namespace std;
 // Definition for singly-linked list.
@@ -24,3 +24,6 @@ class Solution {
         return 1 + max(TreeHeight(root->left), TreeHeight(root->right));
     }
 };
+
+// 更加优化方案的解法
+// https://leetcode.com/problems/balanced-binary-tree/discuss/35691/The-bottom-up-O(N)-solution-would-be-better

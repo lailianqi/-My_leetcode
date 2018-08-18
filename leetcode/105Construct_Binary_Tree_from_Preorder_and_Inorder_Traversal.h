@@ -98,3 +98,30 @@ class Solution_2 {
         return root;
     }
 };
+
+// --------------------------------二刷
+class Solution_3 {
+  public:
+    map<int, int> dir;
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
+        int m = preorder.size(), n = inorder.size();
+        for (int i = 0; i < m; i++) {
+            dir[inorder[i]] = i;
+        }
+        return helper(preorder, inorder, 0, m - 1, 0, n - 1);
+    }
+    TreeNode *helper(vector<int> &preorder, vector<int> &inorder, int pre_start,
+                     int pre_end, int in_start, int in_end) {
+        if (pre_start > pre_end) {
+            return nullptr;
+        }
+        TreeNode *root = new TreeNode(preorder[pre_start]);
+        int split = dir[preorder[pre_start]];
+        root->left = helper(preorder, inorder, pre_start + 1,
+                            split - in_start + pre_start, in_start, split - 1);
+        root->right =
+            helper(preorder, inorder, split - in_start + pre_start + 1, pre_end,
+                   split + 1, in_end);
+        return root;
+    }
+};

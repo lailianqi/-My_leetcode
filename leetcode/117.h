@@ -1,7 +1,7 @@
 
+#include <queue>
 #include <string>
 #include <vector>
-#include <queue>
 using namespace std;
 
 // Definition for binary tree with next pointer.
@@ -83,5 +83,33 @@ class Solution_1 {
             cur = cur->next;
         }
         connect(pivot->next);
+    }
+};
+
+// ------------------二刷
+class Solution_2 {
+  public:
+    void connect(TreeLinkNode *root) {
+        if (root == nullptr) {
+            return;
+        }
+        auto cur = root;
+        TreeLinkNode *pivot = new TreeLinkNode(-1);
+        while (cur) {
+            TreeLinkNode *pre = pivot;
+            while (cur) {
+                if (cur->left) {
+                    pre->next = cur->left;
+                    pre = pre->next;
+                }
+                if (cur->right) {
+                    pre->next = cur->right;
+                    pre = pre->next;
+                }
+                cur = cur->next;
+            }
+            cur = pivot->next;
+            pivot->next = NULL;
+        }
     }
 };

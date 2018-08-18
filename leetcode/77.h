@@ -26,6 +26,8 @@ class Solution {
     }
 };
 
+// https://discuss.leetcode.com/topic/26689/short-iterative-c-answer-8ms/11
+
 class Solution_1 {
   public:
     vector<vector<int>> combine(int n, int k) {

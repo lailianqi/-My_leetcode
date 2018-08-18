@@ -1,5 +1,5 @@
-#include <vector>
 #include <algorithm>
+#include <vector>
 using namespace std;
 class Solution {
   public:
@@ -55,6 +55,17 @@ class Solution_1 {
         return i == m;
     }
 };
+
+class Solution_11 {
+  public:
+    bool canJump(vector<int> &nums) {
+        int reach = 0, i = 0, m = nums.size();
+        for (; i < m && i <= reach; i++) {
+            reach = max(reach, i + nums[i]);
+        }
+        return reach >= m - 1;
+    }
+};
 //贪心算法 77%beat
 class Solution_2 {
   public:
@@ -78,7 +89,7 @@ with a value of 0; in this case we evaluate if there exist an element somewhere
 at the start of the array which has a jump value large enough to jump over this
 0 value element.
 */
-//You are here! Your runtime beats 22.28 % of cpp submissions.
+// You are here! Your runtime beats 22.28 % of cpp submissions.
 class Solution_3 {
   public:
     bool canJump(vector<int> &nums) {

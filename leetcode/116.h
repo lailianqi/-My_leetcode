@@ -1,6 +1,6 @@
+#include <queue>
 #include <string>
 #include <vector>
-#include <queue>
 using namespace std;
 
 // Definition for binary tree with next pointer.
@@ -44,5 +44,23 @@ class Solution_0 {
             }
             pre = pre->left;
         }
+    }
+};
+
+// ------------------二刷
+class Solution_2 {
+  public:
+    void connect(TreeLinkNode *root) {
+        if (root == NULL) {
+            return;
+        }
+        if (root->left) {
+            root->left->next = root->right;
+        }
+        if (root->right && root->next) {
+            root->right->next = root->next->left;
+        }
+        connect(root->left);
+        connect(root->right);
     }
 };

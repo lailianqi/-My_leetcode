@@ -1,7 +1,7 @@
-#include <vector>
 #include <algorithm>
-#include <queue>
 #include <functional>
+#include <queue>
+#include <vector>
 using namespace std;
 //自己的写法写的，感觉这题这样写太简单了
 class MedianFinder {
@@ -82,4 +82,35 @@ class Solution_0 {
   private:
     priority_queue<int, vector<int>, greater<int>> small_stack;
     priority_queue<int, vector<int>, less<int>> big_stack;
+};
+
+// ---------------------------------
+// 二刷的时候写的
+class MedianFinder_0 {
+  public:
+    /** initialize your data structure here. */
+    MedianFinder_0() {}
+
+    void addNum(int num) {
+        min_heap.push(num);
+        max_heap.push(min_heap.top());
+        min_heap.pop();
+        if (max_heap.size() > min_heap.size()) {
+            auto temp = max_heap.top();
+            max_heap.pop();
+            min_heap.push(temp);
+        }
+    }
+
+    double findMedian() {
+        if (max_heap.size() == min_heap.size()) {
+            return (max_heap.top() + min_heap.top()) / 2.0;
+        } else {
+            return min_heap.top();
+        }
+    }
+
+  private:
+    priority_queue<int, vector<int>, less<int>> max_heap;
+    priority_queue<int, vector<int>, greater<int>> min_heap;
 };

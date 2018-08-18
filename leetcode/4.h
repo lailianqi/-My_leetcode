@@ -50,3 +50,38 @@ class Solution {
             return *(a + i - 1);
     }
 };
+// ---------------------二刷
+class Solution {
+  public:
+    double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2) {
+        int m = nums1.size(), n = nums2.size();
+        int total = m + n;
+        if (total & 1) {
+            return find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1);
+        } else {
+            return (find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1) +
+                    find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1)) /
+                   2.0;
+        }
+    }
+    int find_k(vector<int>::iterator a, int m, vector<int>::iterator b, int n,
+               int k) {
+        if (m > n) {
+            return find_k(b, n, a, m, k);
+        }
+        if (m == 0) {
+            return b[k - 1];
+        }
+        if (k == 1) {
+            return min(*a, *b);
+        }
+        int i = min(m, k / 2), j = k - i;
+        if (*(a + i - 1) < *(b + j - 1)) {
+            return find_k(a + i, m - i, b, n, j);
+        } else if (*(a + i - 1) > *(b + j - 1)) {
+            return find_k(a, m, b + j, n - j, i);
+        } else {
+            return *(a + i - 1);
+        }
+    }
+};

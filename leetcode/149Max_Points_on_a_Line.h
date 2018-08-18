@@ -102,3 +102,41 @@ void test() {
     points.push_back(p4);
     cout << s.maxPoints(points) << endl;
 }
+
+// 二刷---------------------------------------
+class Solution_2 {
+  public:
+    int maxPoints(vector<Point> &points) {
+        int m = points.size(), result = 0;
+        if (m <= 2) {
+            return m;
+        }
+        for (int i = 0; i < m; i++) {
+            int max_value = 0, overlap = 0;
+            map<string, int> dir;
+            for (int j = i + 1; j < m; j++) {
+                int x = points[i].x - points[j].x;
+                int y = points[i].y - points[j].y;
+                if (x == 0 && y == 0) {
+                    overlap++;
+                    continue;
+                }
+                int gcd = generateGcd(x, y);
+                x = x / gcd, y = y / gcd;
+                string key = to_string(x) + ":" + to_string(y);
+                dir[key]++;
+                max_value = max(max_value, dir[key]);
+            }
+            result = max(result, max_value + overlap + 1);
+        }
+        return result;
+    }
+
+  private:
+    int generateGcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
+        return generateGcd(b, a % b);
+    }
+};

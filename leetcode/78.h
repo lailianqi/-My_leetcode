@@ -44,6 +44,8 @@ shown in the following (initially the 8 subsets are all empty):
 
 [], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]
 */
+// 这种方法是最牛逼的
+// https://leetcode.com/problems/subsets/discuss/27288/My-solution-using-bit-manipulation
 class Solution_0 {
   public:
     vector<vector<int>> subsets(vector<int> &nums) {
@@ -72,6 +74,8 @@ Have you got the idea :-)
 The code is as follows.
 */
 
+
+// https://leetcode.com/problems/subsets/discuss/27511/C++-8ms-simple-iterative-solution
 class Solution_1 {
   public:
     vector<vector<int>> subsets(vector<int> &nums) {

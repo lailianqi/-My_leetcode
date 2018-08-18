@@ -17,6 +17,8 @@ class Solution {
     }
 };
 
+// https://leetcode.com/problems/powx-n/discuss/19546/Short-and-easy-to-understand-solution
+// https://leetcode.com/problems/powx-n/discuss/19544/5-different-choices-when-talk-with-interviewers
 class Solution_0 {
   public:
     double myPow(double x, int n) {
@@ -31,4 +33,21 @@ class Solution_0 {
     }
 };
 
-//When n=Integer.MIN_VALUE, then n=-n will overflow.
+// When n=Integer.MIN_VALUE, then n=-n will overflow.
+
+class Solution_1 {
+  public:
+    double myPow(double x, int n) {
+        if (n == 0)
+            return 1;
+        if (n == 1) {
+            return x;
+        }
+        double t = myPow(x, n / 2);
+        if (n % 2 == 0) {
+            return t * t;
+        } else {
+            return n < 0 ? 1 / x * t * t : x * t * t;
+        }
+    }
+};

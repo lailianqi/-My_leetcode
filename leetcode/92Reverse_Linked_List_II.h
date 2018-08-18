@@ -4,7 +4,7 @@ using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
-    *ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x) : val(x), next(NULL) {}
 };
 
 /*
@@ -33,6 +33,27 @@ class Solution {
             curThen->next = pre->next;
             pre->next = curThen;
             curThen = cur->next;
+        }
+        return result->next;
+    }
+};
+
+// https://leetcode.com/problems/reverse-linked-list-ii/discuss/30668/12-lines-4ms-C++
+class Solution_0 {
+  public:
+    ListNode *reverseBetween(ListNode *head, int m, int n) {
+        ListNode *result = new ListNode(0);
+        result->next = head;
+        ListNode *pre = result;
+        for (int i = 0; i < m - 1; i++) {
+            pre = pre->next;
+        }
+        ListNode *cur = pre->next;
+        for (int i = 0; i < n - m; i++) {
+            auto temp = cur->next;
+            cur->next = temp->next;
+            temp->next = pre->next;
+            pre->next = temp;
         }
         return result->next;
     }

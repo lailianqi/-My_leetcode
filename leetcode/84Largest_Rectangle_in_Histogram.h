@@ -1,5 +1,6 @@
-#include <vector>
 #include <climits>
+#include <stack>
+#include <vector>
 using namespace std;
 //最简单的解法 当是时间复杂度太高O(n2)，通不过测试    95 / 96 test cases passed.
 class Solution {
@@ -64,5 +65,25 @@ class Solution_1 {
         for (int i = 0; i < m; ++i)
             ans = max(ans, heights[i] * (right[i] - left[i]));
         return ans;
+    }
+};
+
+// --------------------------------第二遍练习时的写法
+class Solution_2 {
+  public:
+    int largestRectangleArea(vector<int> &heights) {
+        stack<int> stk;
+        int res = 0;
+        heights.push_back(0);
+        for (int i = 0; i < heights.size(); i++) {
+            while (!stk.empty() && heights[stk.top()] > heights[i]) {
+                int height = heights[stk.top()];
+                stk.pop();
+                int temp = stk.empty() ? -1 : stk.top();
+                res = max(res, height * (i - temp - 1));
+            }
+            stk.push(i);
+        }
+        return res;
     }
 };

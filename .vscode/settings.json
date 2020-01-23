@@ -40,7 +40,12 @@
         "ios": "cpp",
         "string_view": "cpp",
         "iterator": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "valarray": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "forward_list": "cpp"
     },
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.errorSquiggles": "Enabled"

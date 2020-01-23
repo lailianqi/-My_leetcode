@@ -34,7 +34,7 @@ class Solution {
 // https://discuss.leetcode.com/topic/7427/a-very-concise-solution
 class Solution_1 {
   public:
-    vector<int> preorderTraversal(TreeNode *root) {
+    vector<int> postorderTraversal(TreeNode *root) {
         vector<int> v;
         if (!root)
             return v;
@@ -110,3 +110,6 @@ public List<Integer> postorderTraversal(TreeNode root) {
     return result;
 }
 */
+
+// 牛逼的解法 二刷的时候发现的
+// https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45551/Preorder-Inorder-and-Postorder-Iteratively-Summarization

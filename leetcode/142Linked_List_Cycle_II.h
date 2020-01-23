@@ -30,3 +30,23 @@ class Solution {
         return NULL;
     }
 };
+
+// 二刷---------------
+class Solution {
+  public:
+    ListNode *detectCycle(ListNode *head) {
+        auto slow = head, faster = head, entry = head;
+        while (faster && faster->next) {
+            slow = slow->next;
+            faster = faster->next->next;
+            if (slow == faster) {
+                while (entry != slow) {
+                    entry = entry->next;
+                    slow = slow->next;
+                }
+                return entry;
+            }
+        }
+        return NULL;
+    }
+};

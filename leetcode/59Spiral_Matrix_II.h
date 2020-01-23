@@ -1,4 +1,4 @@
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 // You are here! Your runtime beats 0.40 % of cpp submissions
@@ -31,8 +31,8 @@ class Solution {
 
 class Solution_0 {
   public:
-    vector<vector<int> > generateMatrix(int x) {
-        vector<vector<int> > my2DVector(x, vector<int>(x, 0));
+    vector<vector<int>> generateMatrix(int x) {
+        vector<vector<int>> my2DVector(x, vector<int>(x, 0));
         int number = 1;
         int m = my2DVector.size();
         for (int i = 0; i <= m / 2; i++) {

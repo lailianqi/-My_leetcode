@@ -1,6 +1,5 @@
-#include <stack>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
 // You are here!
 // Your runtime beats 47.24 % of cpp submissions
 class Solution {

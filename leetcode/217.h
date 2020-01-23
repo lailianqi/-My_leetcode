@@ -1,5 +1,4 @@
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 // Your runtime beats 90.57 % of cpp submissions.
 class Solution {

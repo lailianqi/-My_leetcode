@@ -1,6 +1,6 @@
-#include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <vector>
 using namespace std;
 
 // https://discuss.leetcode.com/topic/6148/my-really-simple-java-o-n-solution-accepted?page=1
@@ -98,5 +98,26 @@ class Solution_2 {
                 ret = max(ret, right - left - 1);
             }
         return ret;
+    }
+};
+
+// ------------------------------二刷
+class Solution {
+  public:
+    int longestConsecutive(vector<int> &nums) {
+        unordered_map<int, int> dir;
+        int m = nums.size(), res = 0;
+        for (int i = 0; i < m; i++) {
+            if (!dir.count(nums[i])) {
+                int left = dir.count(nums[i] - 1) ? dir[nums[i] - 1] : 0;
+                int right = dir.count(nums[i] + 1) ? dir[nums[i] + 1] : 0;
+                int length = left + right + 1;
+                dir[nums[i]] = length;
+                dir[nums[i] - left] = length;
+                dir[nums[i] + right] = length;
+                res = max(res, length);
+            }
+        }
+        return res;
     }
 };

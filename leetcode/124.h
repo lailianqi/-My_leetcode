@@ -1,5 +1,5 @@
-#include <string>
 #include <climits>
+#include <string>
 using namespace std;
 
 struct TreeNode {
@@ -46,5 +46,27 @@ class Solution_0 {
         int currSum = root->val + leftPathSum + rightPathSum;
         result = max(result, currSum);
         return max(leftPathSum, rightPathSum) + root->val;
+    }
+};
+
+// ------------------------------ 二刷
+class Solution_1 {
+  private:
+    int res = INT_MIN;
+
+  public:
+    int maxPathSum(TreeNode *root) {
+        helper(root);
+        return res;
+    }
+    int helper(TreeNode *root) {
+        if (root == NULL) {
+            return 0;
+        }
+        int left_num = max(0, helper(root->left)),
+            right_num = max(0, helper(root->right));
+        int curr = left_num + right_num + root->val;
+        res = max(res, curr);
+        return max(left_num, right_num) + root->val;
     }
 };

@@ -1,5 +1,5 @@
-#include <vector>
 #include <climits>
+#include <vector>
 using namespace std;
 /*
 Say you have an array for which the ith element is the price of a given stock on
@@ -89,5 +89,51 @@ class Solution_0 {
             sell2 = max(sell2, buy2 + prices[i]);
         }
         return sell2;
+    }
+};
+
+// ----------------------------------二刷
+// 最好的解法的链接
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/39608/A-clean-DP-solution-which-generalizes-to-k-transactions
+// 超时的做法
+class Solution_1 {
+  public:
+    int maxProfit(vector<int> &prices) {
+        if (prices.empty()) {
+            return 0;
+        }
+        int times = 2, m = prices.size();
+        vector<vector<int>> dp(times + 1, vector<int>(m, 0));
+        for (int k = 1; k <= times; k++) {
+            for (int i = 1; i < m; i++) {
+                int max_num = -prices[0];
+                for (int j = 1; j <= i; j++) {
+                    max_num = max(max_num, dp[k - 1][j - 1] - prices[j]);
+                }
+                dp[k][i] = max(dp[k][i - 1], max_num + prices[i]);
+            }
+        }
+        return dp[times][m - 1];
+    }
+};
+
+// 改进版 不超时
+class Solution_12 {
+  public:
+    int maxProfit(vector<int> &prices) {
+        if (prices.empty()) {
+            return 0;
+        }
+        int times = 2, m = prices.size();
+        vector<vector<int>> dp(times + 1, vector<int>(m, 0));
+        for (int k = 1; k <= times; k++) {
+            int max_num = -prices[0];
+            for (int i = 1; i < m; i++) {
+                max_num = max(max_num, dp[k - 1][i - 1] - prices[i]);
+                dp[k][i] = max(dp[k][i - 1], max_num + prices[i]);
+            }
+        }
+        return dp[times][m - 1];
     }
 };

@@ -42,3 +42,19 @@ class Solution_0 {
                sumNumbers(root->right, sum * 10 + root->val);
     }
 };
+
+// ------------------------------二刷
+class Solution_1 {
+  public:
+    int sumNumbers(TreeNode *root) { return helper(root, 0); }
+    int helper(TreeNode *root, int sum) {
+        if (root == NULL) {
+            return 0;
+        }
+        int res = 10 * sum + root->val;
+        if (root->left == NULL && root->right == NULL) {
+            return res;
+        }
+        return helper(root->left, res) + helper(root->right, res);
+    }
+};

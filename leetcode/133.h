@@ -1,6 +1,7 @@
-#include <vector>
 #include <map>
 #include <queue>
+#include <unordered_map>
+#include <vector>
 using namespace std;
 struct UndirectedGraphNode {
     int label;
@@ -58,4 +59,28 @@ class Solution_0 {
         }
         return directory[node->label];
     }
+};
+
+// 二刷------------------------
+class Solution {
+  public:
+    UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node) {
+        if (node == NULL) {
+            return NULL;
+        }
+        return clone(node);
+    }
+    UndirectedGraphNode *clone(UndirectedGraphNode *node) {
+        if (dir.count(node->label)) {
+            return dir[node->label];
+        }
+        dir[node->label] = new UndirectedGraphNode(node->label);
+        for (int i = 0; i < node->neighbors.size(); i++) {
+            dir[node->label]->neighbors.push_back(clone(node->neighbors[i]));
+        }
+        return dir[node->label];
+    }
+
+  private:
+    unordered_map<int, UndirectedGraphNode *> dir;
 };

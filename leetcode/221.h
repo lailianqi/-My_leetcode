@@ -1,5 +1,4 @@
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 // leetcode的答案，这题dp比较简单，但是没有想到，所以没有做出来
 //下面是参考答案后改进的

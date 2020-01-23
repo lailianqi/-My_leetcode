@@ -1,6 +1,6 @@
-#include <vector>
 #include <algorithm>
 #include <climits>
+#include <vector>
 using namespace std;
 
 /*
@@ -35,5 +35,17 @@ class Solution_0 {
             result += max(0, prices[i] - prices[i - 1]);
         }
         return result;
+    }
+};
+
+// 二刷----------------
+class Solution_2 {
+  public:
+    int maxProfit(vector<int> &prices) {
+        int res = 0;
+        for (int i = 1; i < prices.size(); i++) {
+            res += max(prices[i] - prices[i - 1], 0);
+        }
+        return res;
     }
 };

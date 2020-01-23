@@ -1,7 +1,4 @@
-#include <string>
-#include <vector>
-#include <map>
-#include <set>
+#include <bits/stdc++.h>
 using namespace std;
 // Time Limit Exceeded
 //思路错了 不应该用递归来写，肯定是超时的
@@ -37,7 +34,8 @@ class Solution_0 {
         dp[0] = true;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j <= i; j++) {
-                if (dp[j] && directoty.find(s.substr(j, i - j + 1)) != directoty.end()) {
+                if (dp[j] &&
+                    directoty.find(s.substr(j, i - j + 1)) != directoty.end()) {
                     dp[i + 1] = true;
                     break;
                 }
@@ -52,3 +50,23 @@ void test() {
     vector<string> wordDict = {"leet", "code"};
     s.wordBreak("leetcode", wordDict);
 }
+
+// 二刷------------------
+class Solution {
+  public:
+    bool wordBreak(string s, vector<string> &wordDict) {
+        int m = s.size();
+        vector<bool> dp(m + 1, false);
+        unordered_set<string> dir(wordDict.begin(), wordDict.end());
+        dp[0] = true;
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= i; j++) {
+                if (dp[j - 1] && dir.count(s.substr(j - 1, i - j + 1))) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[m];
+    }
+};

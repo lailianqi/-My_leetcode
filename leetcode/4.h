@@ -57,10 +57,10 @@ class Solution {
         int m = nums1.size(), n = nums2.size();
         int total = m + n;
         if (total & 1) {
-            return find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1);
+            return find_k(nums1.begin(), m, nums2.begin(), n, total / 2 + 1);
         } else {
-            return (find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1) +
-                    find_k(nums1.begin(), m, nums2.begin(), n, total / 2 - 1)) /
+            return (find_k(nums1.begin(), m, nums2.begin(), n, total / 2) +
+                    find_k(nums1.begin(), m, nums2.begin(), n, total / 2 + 1)) /
                    2.0;
         }
     }

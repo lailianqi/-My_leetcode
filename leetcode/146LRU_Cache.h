@@ -53,7 +53,8 @@ class LRUCache {
   public:
     LRUCache(int capacity) : capacity(capacity) {}
 
-    void visit_node(unordered_map<int, list<pair<int, int>>::iterator>::iterator it) {
+    void visit_node(
+        unordered_map<int, list<pair<int, int>>::iterator>::iterator it) {
         pair<int, int> temp = *(it->second);
         cacheList.erase(it->second);
         cacheList.push_front(temp);
@@ -86,3 +87,46 @@ class LRUCache {
     }
 };
 }; // namespace ff
+
+// 二刷
+class LRUCache {
+  public:
+    LRUCache(int capacity) { this->capacity = capacity; }
+
+    int get(int key) {
+        auto it = dir.find(key);
+        if (it == dir.end()) {
+            return -1;
+        }
+        visit(it);
+        return it->second->second;
+    }
+
+    void put(int key, int value) {
+        auto it = dir.find(key);
+        if (it != dir.end()) {
+            visit(it);
+        } else {
+            if (cacheList.size() >= this->capacity) {
+                dir.erase(cacheList.back().first);
+                cacheList.pop_back();
+            }
+            cacheList.push_front(make_pair(key, value));
+        }
+        auto it2 = cacheList.begin();
+        it2->second = value;
+        dir[it2->first] = it2;
+    }
+
+  private:
+    void
+    visit(unordered_map<int, list<pair<int, int>>::iterator>::iterator it) {
+        auto p = *(it->second);
+        cacheList.push_front(p);
+        cacheList.erase(it->second);
+        it->second = cacheList.begin();
+    }
+    unordered_map<int, list<pair<int, int>>::iterator> dir;
+    list<pair<int, int>> cacheList;
+    int capacity;
+};

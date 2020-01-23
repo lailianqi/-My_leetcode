@@ -1,5 +1,4 @@
-#include <cmath>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 //自己写的方法 leetcode上最快的方案是12ms，这个方案到达了16ms
 class Solution {

@@ -92,3 +92,23 @@ void test() {
     vector<int> cost = {2, 1};
     s.canCompleteCircuit(gas, cost);
 }
+
+// 二刷---------------------
+class Solution {
+  public:
+    int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+        int m = gas.size();
+        int res = 0, remain = gas[0] - cost[0];
+        int sum = remain;
+        for (int i = 1; i < m; i++) {
+            if (remain < 0) {
+                res = i;
+                remain = gas[i] - cost[i];
+            } else {
+                remain += gas[i] - cost[i];
+            }
+            sum += gas[i] - cost[i];
+        }
+        return sum < 0 ? -1 : res;
+    }
+};

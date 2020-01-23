@@ -1,5 +1,4 @@
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 // Definition for a binary tree node.
 struct TreeNode {
@@ -50,3 +49,25 @@ class Solution_0 {
 
 //终极的写法
 // https://discuss.leetcode.com/topic/46016/learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-java-solution
+
+// 二刷时候的解法
+class Solution_1 {
+  public:
+    vector<int> inorderTraversal(TreeNode *root) {
+        auto cur = root;
+        vector<int> res;
+        stack<TreeNode *> stk;
+        while (cur || !stk.empty()) {
+            if (cur) {
+                stk.push(cur);
+                cur = cur->left;
+            } else {
+                cur = stk.top();
+                stk.pop();
+                res.push_back(cur->val);
+                cur = cur->right;
+            }
+        }
+        return res;
+    }
+};

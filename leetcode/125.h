@@ -43,7 +43,28 @@ class Solution_0 {
     }
 };
 
-void test() {
-    Solution s;
-    s.isPalindrome("0P");
-}
+// void test() {
+//     Solution s;
+//     s.isPalindrome("0P");
+// }
+// ---------------------------二刷
+class Solution_1 {
+  public:
+    bool isPalindrome(string s) {
+        int m = s.size();
+        int left = 0, right = m - 1;
+        while (left < right) {
+            while (!isalnum(s[left]) && left < right) {
+                left++;
+            }
+            while (!isalnum(s[right]) && left < right) {
+                right--;
+            }
+            if (tolower(s[left]) != tolower(s[right])) {
+                return false;
+            }
+            left++, right--;
+        }
+        return true;
+    }
+};

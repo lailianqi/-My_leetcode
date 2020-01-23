@@ -1,8 +1,8 @@
-#include <vector>
-#include <unordered_set>
+#include <map>
 #include <queue>
 #include <string>
-#include <map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 //自己的写法
 class Solution {
@@ -142,3 +142,45 @@ void test() {
     vector<string> ss = {"hot", "dot", "dog", "lot", "log"};
     s.ladderLength("hit", "cog", ss);
 }
+
+// -----------------------------二刷
+class Solution_2 {
+  public:
+    int ladderLength(string beginWord, string endWord,
+                     vector<string> &wordList) {
+        unordered_set<string> dir(wordList.begin(), wordList.end());
+        if (!dir.count(endWord)) {
+            return 0;
+        }
+        int res = 0;
+        queue<string> word_queue;
+        word_queue.push(beginWord);
+        while (!word_queue.empty()) {
+            int m = word_queue.size();
+            res++;
+            for (int i = 0; i < m; i++) {
+                auto ele = word_queue.front();
+                word_queue.pop();
+                if (ele == endWord) {
+                    return res;
+                }
+                add_queue(word_queue, ele, dir);
+            }
+        }
+        return 0;
+    }
+    void add_queue(queue<string> &word_queue, string &word,
+                   unordered_set<string> &dir) {
+        for (int i = 0; i < word.size(); i++) {
+            char letter = word[i];
+            for (char ch = 'a'; ch <= 'z'; ++ch) {
+                word[i] = ch;
+                if (dir.count(word)) {
+                    word_queue.push(word);
+                    dir.erase(word);
+                }
+            }
+            word[i] = letter;
+        }
+    }
+};

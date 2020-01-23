@@ -42,3 +42,21 @@ class Solution_0 {
         return node;
     }
 };
+
+// 二刷--------------------
+class Solution_1 {
+  public:
+    ListNode *reverseList(ListNode *head) {
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
+        ListNode *pre = NULL, *cur = head;
+        while (cur) {
+            auto temp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
+};

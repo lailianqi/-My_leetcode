@@ -1,6 +1,6 @@
-#include <vector>
 #include <algorithm>
 #include <climits>
+#include <vector>
 using namespace std;
 class Solution {
   public:
@@ -39,5 +39,27 @@ class Solution_0 {
             minNum = min(minNum, dp[j]);
         }
         return minNum;
+    }
+};
+
+// 二刷时候的解法
+class Solution_1 {
+  public:
+    int minimumTotal(vector<vector<int>> &triangle) {
+        int m = triangle.size();
+        vector<int> dp(m, 0);
+        for (int i = 0; i < m; i++) {
+            int n = triangle[i].size();
+            for (int j = n - 1; j >= 0; j--) {
+                if (j == n - 1) {
+                    dp[j] = dp[j - 1] + triangle[i][j];
+                } else if (j == 0) {
+                    dp[j] += triangle[i][j];
+                } else {
+                    dp[j] = min(dp[j], dp[j - 1]) + triangle[i][j];
+                }
+            }
+        }
+        return *min_element(dp.begin(), dp.end());
     }
 };

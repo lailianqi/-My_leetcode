@@ -1,6 +1,6 @@
-#include <vector>
 #include <algorithm>
 #include <climits>
+#include <vector>
 using namespace std;
 
 /*
@@ -69,5 +69,19 @@ class Solution_1 {
             maxSoFar = max(maxCur, maxSoFar);
         }
         return maxSoFar;
+    }
+};
+
+// -----------------------二刷
+class Solution {
+  public:
+    int maxProfit(vector<int> &prices) {
+        int m = prices.size();
+        int res = 0, min_num = 0;
+        for (int i = 1; i < m; i++) {
+            min_num = max(0, min_num + prices[i] - prices[i - 1]);
+            res = max(res, min_num);
+        }
+        return res;
     }
 };

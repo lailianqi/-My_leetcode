@@ -76,3 +76,41 @@ class Solution_0 {
         return head;
     }
 };
+
+// 第二遍的写法 网易的面试中碰到了 这是在网易面试中的写法
+class Solution_1 {
+  public:
+    ListNode *swapPairs(ListNode *head) {
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
+        ListNode *newHead = new ListNode(-1);
+        newHead->next = head;
+        auto pre = newHead, cur1 = head, cur2 = head->next;
+        while (cur1 && cur2) {
+            auto temp = cur2->next;
+            pre->next = cur2;
+            cur2->next = cur1;
+            cur1->next = temp;
+            pre = cur1;
+            cur1 = temp;
+            cur2 = temp ? temp->next : NULL;
+        }
+        return newHead->next;
+    }
+};
+
+// 这里用递归的写法写
+class Solution_2 {
+  public:
+    ListNode *swapPairs(ListNode *head) {
+        if (head == NULL || head->next == NULL) {
+            return head;
+        }
+        auto first = head, second = head->next;
+        auto next = swapPairs(second->next);
+        second->next = first;
+        first->next = next;
+        return second;
+    }
+};
